@@ -1,6 +1,7 @@
 package com.luan.proxy;
 
 import com.luan.proxy.api.ColorAPI;
+import com.luan.proxy.commands.ChatClearCommand;
 import com.luan.proxy.commands.PingCommand;
 import lombok.Getter;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -29,5 +30,7 @@ public final class ProxySystem extends Plugin {
 
     public void loadCommands(PluginManager pluginManager) {
         pluginManager.registerCommand(this, new PingCommand("ping", this));
+        pluginManager.registerCommand(this, new ChatClearCommand("cc", this));
+        pluginManager.registerCommand(this, new ChatClearCommand("chatclear", this));
     }
 }
