@@ -1,8 +1,10 @@
 package com.luan.proxy;
 
 import com.luan.proxy.api.ColorAPI;
+import com.luan.proxy.commands.PingCommand;
 import lombok.Getter;
 import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.api.plugin.PluginManager;
 
 public final class ProxySystem extends Plugin {
 
@@ -10,16 +12,22 @@ public final class ProxySystem extends Plugin {
     private static ProxySystem instance;
     @Getter
     private static ColorAPI colorAPI;
+    @Getter
+    private String prefix;
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
-
         instance = this;
+        colorAPI = new ColorAPI();
+
+        loadCommands(this.getProxy().getPluginManager());
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+    }
+
+    public void loadCommands(PluginManager pluginManager) {
+        pluginManager.registerCommand(this, new PingCommand("ping", this));
     }
 }

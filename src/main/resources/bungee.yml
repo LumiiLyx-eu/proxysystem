@@ -1,3 +1,4 @@
 name: lummilyx-proxy
 version: '${version}'
 main: com.luan.proxy.ProxySystem
+author: EinsLuannn
